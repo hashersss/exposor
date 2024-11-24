@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Exposor-Logo" src="https://github.com/abuyv/exposor/blob/main/docs/media/exposor-logo.png" height="150" />
+  <img alt="Exposor-Logo" src="https://raw.githubusercontent.com/abuyv/exposor/main/docs/media/exposor-logo.png" height="150" />
   <br>
 <strong>Exposor - A Contactless Reconnaissance Tool with unified syntax</strong>
   <p align="center">
@@ -35,7 +35,7 @@ Exposor is a contactless reconnaissance tool focused on technology detection acr
 - Contribute custom YAML files to extend detection capabilities.
 
 <div align="center">
-<img alt="Exposor Help" src="https://github.com/abuyv/exposor/blob/main/docs/media/exposor-help.gif" width="800"/>
+<img alt="Exposor Help" src="https://raw.githubusercontent.com/abuyv/exposor/main/docs/media/exposor-help.gif" width="800"/>
 </div>
 
 ### Key Features
@@ -57,9 +57,6 @@ Intall via pip
 ```bash
 #latest stable release
 pip install exposor
-
-#latest development changes
-python -m pip install git+https://github.com/abuyv/exposor
 ```
 
 Clone the repository
@@ -220,6 +217,6 @@ Use `Exposor` responsibly and follow all regulations. You are fully responsible 
 ***
 
 ## 💙 Thank you</h2>
-<img src="https://github.com/abuyv/exposor/blob/main/docs/media/exposor-star-repo.gif" alt="Starred" width="300"/>
+<img src="https://raw.githubusercontent.com/abuyv/exposor/main/docs/media/exposor-star-repo.gif" alt="Starred" width="300"/>
 
 If you are here and found it useful, consider giving the repository a ⭐ to show your support. 
