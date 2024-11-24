@@ -1,0 +1,26 @@
+name: Calculate Folder Checksum
+
+on:
+  push:
+    paths:
+      - 'exposor/intels/**'  # Trigger only when changes occur in the intels folder
+
+jobs:
+  calculate-checksum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Calculate Checksum of intels Folder
+        run: |
+          # Ensure the intels directory exists
+          if [ -d "exposor/intels" ]; then
+            # Find all files in the intels folder, sort them, and compute a checksum
+            CHECKSUM=$(find exposor/intels -type f -exec sha256sum {} + | sort | sha256sum | awk '{print $1}')
+            echo "Checksum of intels folder: $CHECKSUM"
+          else
+            echo "intels folder does not exist."
+            exit 1
+          fi

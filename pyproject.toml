@@ -1,0 +1,5 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+keywords = ["Reconnaissance", "Scanner", "Vulnerability", "CVE", "CPE", "Asset Discovery", "OSINT"]

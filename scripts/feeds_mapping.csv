@@ -1,0 +1,13 @@
+﻿filter,fofa,shodan,zoomeye,censys
+app,app,product,app,services.software.product
+product,product,product,app,services.software.product
+html,banner,html,banner,services.banner
+http.component,banner,http.component,banner,services.banner
+banner,banner,http.html,banner,services.banner
+body,body,http.html,banner,services.http.response.body
+header,header,http.html,headers,services.banner
+http.html,http.html,http.html,html,services.http.response.body
+icon_hash,icon_hash,http.favicon.hash,iconhash,services.http.response.favicons.shodan_hash
+ssl.cert.issuer.cn,cert.issuer.cn,ssl.cert.issuer.cn,ssl.cert.issuer.cn,services.tls.certificate.parsed.issuer.common_name
+http.title,http.title,http.title,title,services.http.response.html_title
+title,http.title,title,title,services.http.response.html_title

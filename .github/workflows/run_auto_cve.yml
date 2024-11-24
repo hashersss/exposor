@@ -1,0 +1,53 @@
+name: Print Hello for Changed Files
+
+on:
+  push:
+    paths:
+      - 'exposor/intels/technology_intels/**'  # Trigger on changes in this folder
+
+jobs:
+  print-hello-world:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Get Changed Files
+        id: get-files
+        run: |
+          # Get the list of changed files in the technology_intels directory
+          CHANGED_FILES=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep "^exposor/intels/technology_intels/")
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found in exposor/intels/technology_intels."
+            exit 0
+          fi
+
+          # Export the list of changed files as an output variable
+          echo "changed_files<<EOF" >> $GITHUB_ENV
+          echo "$CHANGED_FILES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Print Hello World for Each File
+        run: |
+          echo "Changed files:"
+          echo "${{ env.changed_files }}"
+          
+          # Loop through each file
+          while IFS= read -r FILE; do
+            echo "Hello, world! File: $FILE"
+          done <<< "${{ env.changed_files }}"
+
+      - name: Run Vulners API Script for Each File
+        run: |
+          echo "Processing changed files with Vulners API:"
+          
+          # Loop through each file and pass it as an argument to vulners-api.py
+          while IFS= read -r FILE; do
+            echo "Running Vulners API for file: $FILE"
+            python3 $GITHUB_WORKSPACE/scripts/vulners-api.py "$FILE"
+          done <<< "${{ env.changed_files }}"
